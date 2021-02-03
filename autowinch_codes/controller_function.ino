@@ -11,9 +11,13 @@ float get_reference(float err){
 void move_spool(int motor_speed){
   
   motor_speed = motor_factor*motor_speed;
+  //Serial.print("speed:");
+  //Serial.println(motor_speed);
   int dir = ((motor_speed/abs(motor_speed)) +1)/2;
-  if(motor_speed>255 || motor_speed < 255)
-  motor_speed = 255;
+  //Serial.print("dirction:");
+  //Serial.println(dir);
+  if(motor_speed>100 || motor_speed < -100)
+  motor_speed = 100;
   else
   motor_speed = abs(motor_speed);
 

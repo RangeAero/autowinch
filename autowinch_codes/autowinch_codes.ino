@@ -1,4 +1,6 @@
-#include "HX711.h"
+#include <HX711.h>
+
+ #include "HX711.h"
 
 #define positive 1
 #define negative 0
@@ -72,18 +74,20 @@ void setup() {
 void loop() {
   
   ref = get_reference(round(read_Scale())); //estimate input signal for no. of steps by reading load cell
+  //Serial.print("Motor speed ref: ");
+  //Serial.println(ref);
   move_spool(round(ref));
-  move_slider();
+  //move_slider();
   
   
  
-
+//Serial.println(" ");
   
-  Serial.print("Load cell:   ");
-  Serial.println(read_Scale());
-  Serial.print("Encoder value:   ");
-  Serial.println(encoderValue);
-  delay(500);
+  //Serial.print("Load cell:   ");
+  //1Serial.println(read_Scale());
+  //Serial.print("Encoder value:   ");
+  //Serial.println(encoderValue);
+  //delay(50);
   // put your main code here, to run repeatedly:
 
 }
