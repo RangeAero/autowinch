@@ -1,3 +1,4 @@
+//#include <HX711.h>
 #include "HX711.h"
 
 #define positive 1
@@ -5,11 +6,11 @@
 
 
 
-#define encoder_pin_A 2
-#define encoder_pin_B 3
+#define encoder_pin_A 2  //white
+#define encoder_pin_B 3   // green
 
 #define stepper_step_pin 4
-#define stepper_dir_pin 5
+#define stepper_dir_pin 5  
 
 #define motor_dir_pin 6
 #define motor_pwm_pin 7
@@ -21,13 +22,13 @@
 #define hx711_data_pin A1
 
 #define step_factor 1
-#define motor_factor 0.25
+#define motor_factor 0.1
 
 
 //declare variable for controller gain
 #define gain_p 1
-#define gain_i 0
-#define gain_d 0
+#define gain_i 0.001
+#define gain_d 0.02
 
 
 
@@ -42,7 +43,7 @@ volatile int prev_Encoded = 0;
 
 //declare load cell variable
 HX711 scale;
-#define calibration_factor 1961.0
+#define calibration_factor 450.31 //1961.0
 
 
 //declare variable for defining rotation of lead screw
@@ -62,28 +63,33 @@ void setup() {
  setup_Stepper();//setup the pins for stepper
  setup_Motor();//setup the pins for motor
  setup_Limit_switch();//setup the pins for limit switches
- setup_HX711();
-  
+ //setup_HX711();//blocking function
  Serial.begin(9600);
-
-
 }
 
 void loop() {
   
-  ref = get_reference(round(read_Scale())); //estimate input signal for no. of steps by reading load cell
-  move_spool(round(ref));
+  //ref = get_reference(round(read_Scale())); //estimate input signal for no. of steps by reading load cell
+  //Serial.print("Motor speed ref: ");
+  //Serial.println(ref);
+  //if(ref <= -50 || ref >= 50)
+    //move_spool(round(ref));
+  //else 
+    //move_spool(0);
+    // turn the LED off by making the voltage LOW
+  //Serial.print("Encoder value:   ");
+  //Serial.println(encoderValue);
   move_slider();
   
-  
- 
 
+ 
+//Serial.println(" ");
   
-  Serial.print("Load cell:   ");
-  Serial.println(read_Scale());
-  Serial.print("Encoder value:   ");
-  Serial.println(encoderValue);
-  delay(500);
+  //Serial.print("Load cell:   ");
+  //1Serial.println(read_Scale());
+  //Serial.print("Encoder value:   ");
+  //Serial.println(encoderValue);
+  //delay(50);
   // put your main code here, to run repeatedly:
 
 }

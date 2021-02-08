@@ -1,6 +1,4 @@
 void setup_Encoder(){
-
-  
   pinMode(encoder_pin_A, INPUT); 
   pinMode(encoder_pin_B, INPUT);
   digitalWrite(encoder_pin_A, HIGH); //turn pullup resistor on

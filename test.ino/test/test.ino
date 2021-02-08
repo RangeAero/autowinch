@@ -13,7 +13,7 @@
 
 // Motor steps per revolution. Most steppers are 200 steps or 1.8 degrees/step
 #define MOTOR_STEPS 200
-#define RPM 280
+#define RPM 50
 
 // Since microstepping is set externally, make sure this matches the selected mode
 // If it doesn't, the motor will move at a different RPM than chosen
@@ -21,7 +21,7 @@
 #define MICROSTEPS 1
 
 // All the wires needed for full functionality
-#define DIR 8
+#define DIR 5
 #define STEP 4
 //Uncomment line to use enable/disable functionality
 //#define SLEEP 13
@@ -47,7 +47,7 @@ void loop() {
      * Moving motor one full revolution using the degree notation
      */
     stepper.rotate(360);
-
+    Serial.print("working");
     /*
      * Moving motor to original position using steps
      */
