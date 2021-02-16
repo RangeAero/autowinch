@@ -10,5 +10,8 @@ void setup_Limit_switch(){
   }
 
 void change_dir(){
-  dir_flag *= -1;
-  }  
+  if(millis() - last_interrupt > 200){
+      dir_flag = -1 * dir_flag;
+    }
+    last_interrupt = millis();
+}  

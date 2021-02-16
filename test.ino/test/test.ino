@@ -21,6 +21,7 @@
 #define MICROSTEPS 1
 
 // All the wires needed for full functionality
+#define ena = 2;
 #define DIR 5
 #define STEP 4
 //Uncomment line to use enable/disable functionality

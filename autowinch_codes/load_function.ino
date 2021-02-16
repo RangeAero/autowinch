@@ -7,5 +7,5 @@ void setup_HX711(){
 
 
 float read_Scale(){
-  return (scale.get_units(10));
+  return (scale.get_units());
   }

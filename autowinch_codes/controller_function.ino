@@ -11,13 +11,25 @@ float get_reference(float err){
 void move_spool(int motor_speed){
   
   motor_speed = motor_factor*motor_speed;
-  int dir = ((motor_speed/abs(motor_speed)) +1)/2;
+  int dir;
+  /*int dir = ((motor_speed/abs(motor_speed)) +1)/2;
   if(motor_speed>255 || motor_speed <-255)
     motor_speed = 255;
   else
-    motor_speed = abs(motor_speed);
+    motor_speed = abs(motor_speed);*/
 
-  
+  if(motor_speed < 100){
+    motor_speed = 50;
+    dir = 0;
+  }
+  else if(motor_speed>100 && motor_speed <200) {
+      motor_speed = 0;
+ 
+    }
+    else if (motor_speed > 200) {
+      motor_speed= 50;
+      dir = 1;
+      }
   run_motor(dir, motor_speed);
   //move_stepper(dir, step_factor*abs(steps));
   
